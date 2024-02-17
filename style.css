@@ -23,3 +23,6 @@ body{
   width:50vw;
   font-weight:bold;
 }
+.hidden{
+  display:none;
+}

@@ -1,15 +1,25 @@
 import * as quotes from './quotes.js'
+import * as timer from './timer.js'
 
 const QUOTE=document.querySelector('#quote')
 const CREDIT=document.querySelector('#credit')
 const CHARACTER=document.querySelector('#character').content.childNodes[0]
+const PAUSE=document.querySelector('#pause')
 
 var progress=''
 
-function press(e){
+function display(elements,show=true){for(let e of elements) e.classList.toggle('hidden',!show)}
+
+async function press(e){
   progress+=e.key
   let c=quotes.current
   if(progress.length==c.length){
+    let left=PAUSE.querySelector('span')
+    while(await timer.rest()>1){
+      left.textContent=Math.floor(timer.pause)
+      display([QUOTE,CREDIT],false)
+      display([PAUSE])
+    }
     quotes.next()
     setup()
     return
@@ -29,5 +39,8 @@ export function setup(){
     c.textContent=q
     QUOTE.append(c)
   }
-  window.onkeypress=press
+  window.addEventListener('keypress',press)
+  timer.time()
+  display([QUOTE,CREDIT])
+  display([PAUSE],false)
 }

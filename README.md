@@ -6,4 +6,4 @@ Access it here: https://tukkek.github.io/typing-exercise/
 
 ## Credits
 
-* Max Isom for the *Literature Clock" quote collection https://github.com/codetheweb/literature-clock
+* Max Isom for the *Literature Clock* quote collection https://github.com/codetheweb/literature-clock

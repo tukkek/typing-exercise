@@ -11,6 +11,7 @@ var progress=''
 function display(elements,show=true){for(let e of elements) e.classList.toggle('hidden',!show)}
 
 async function press(e){
+  e.preventDefault()
   progress+=e.key
   let c=quotes.current
   if(progress.length==c.length){
@@ -26,8 +27,12 @@ async function press(e){
   }
   if(c.indexOf(progress)!=0) progress=''
   let character=QUOTE.querySelectorAll('.character')
-  for(let i=0;i<c.length;i++)
-    character[i].classList.toggle('typed',i<progress.length)
+  let l=progress.length
+  for(let i=0;i<c.length;i++) 
+    character[i].classList.toggle('typed',i<l)
+  let r=QUOTE.querySelector('.recent')
+  if(r) r.classList.toggle('recent',false)
+  if(l>0) character[l-1].classList.toggle('recent',true)
 }
 
 export function setup(){

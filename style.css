@@ -11,12 +11,15 @@ body{
   margin:2em auto;
   text-align:justify;
   align-self:center;
-  width:50vw;
+  width:90vw;
   font-size:large;
   font-style:italic;
 }
 #quote .typed{
   color:red;
+}
+#quote .typed.recent{
+  text-decoration:underline;
 }
 #credit{
   text-align:right;

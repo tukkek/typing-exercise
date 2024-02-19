@@ -7,9 +7,16 @@ var quotes={}
 
 function pad(number){return new String(number).padStart(2,'0')}
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+function getRandomInt(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
+
 function get(hour,minute){
   let q=quotes[`${pad(hour)}:${pad(minute)}`]
-  if(q) return q[0]//TODO random
+  if(q) return q[getRandomInt(0,q.length)]
   minute+=1
   if(minute==60){
     minute=0

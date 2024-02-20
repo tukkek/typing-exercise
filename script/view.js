@@ -22,7 +22,7 @@ async function press(e){
       display([PAUSE])
     }
     quotes.next()
-    setup()
+    setup(false)
     return
   }
   if(c.indexOf(progress)!=0) progress=''
@@ -35,7 +35,7 @@ async function press(e){
   if(l>0) character[l-1].classList.toggle('recent',true)
 }
 
-export function setup(){
+export function setup(first=true){
   progress=''
   for(let c of QUOTE.querySelectorAll('.character')) c.remove()
   CREDIT.textContent=quotes.credit
@@ -44,8 +44,8 @@ export function setup(){
     c.textContent=q
     QUOTE.append(c)
   }
-  window.addEventListener('keypress',press)
   timer.time()
   display([QUOTE,CREDIT])
   display([PAUSE],false)
+  if(first) window.addEventListener('keypress',press)
 }

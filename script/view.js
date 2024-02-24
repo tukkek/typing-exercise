@@ -21,7 +21,7 @@ async function press(e){
       display([QUOTE,CREDIT],false)
       display([PAUSE])
     }
-    quotes.next()
+    await quotes.next()
     setup(false)
     return
   }

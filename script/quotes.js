@@ -1,3 +1,5 @@
+import * as rpg from './rpg.js'
+
 const DEBUG=location.toString().indexOf('debug')>=0
 
 export var current='Test.'
@@ -5,18 +7,13 @@ export var credit=''
 
 function pad(number){return new String(number).padStart(2,'0')}
 
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-function getRandomInt(min, max) {
-  const minCeiled = Math.ceil(min);
-  const maxFloored = Math.floor(max);
-  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
-}
-
 async function get(hour,minute){
+  hour=0
+  minute=3
   try{
     let quotes=await fetch(`literature-clock/docs/times/${pad(hour)}_${pad(minute)}.json`)
     quotes=await quotes.json()
-    return quotes[getRandomInt(0,quotes.length)]
+    return rpg.pick(quotes)
   }catch{
     minute+=1
     if(minute==60){

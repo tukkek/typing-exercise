@@ -28,6 +28,7 @@ export async function next(){
   let d=new Date()
   let q=await get(d.getHours(),d.getMinutes())
   current=q['quote_first']+q['quote_time_case']+q['quote_last']
+  current=current.replaceAll('’',"'")
   credit=`-- ${q['author']}, ${q['title']}`
 }
 

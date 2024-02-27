@@ -8,8 +8,6 @@ export var credit=''
 function pad(number){return new String(number).padStart(2,'0')}
 
 async function get(hour,minute){
-  hour=0
-  minute=3
   try{
     let quotes=await fetch(`literature-clock/docs/times/${pad(hour)}_${pad(minute)}.json`)
     quotes=await quotes.json()

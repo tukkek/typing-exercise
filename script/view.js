@@ -8,7 +8,9 @@ const PAUSE=document.querySelector('#pause')
 
 var progress=''
 
-function display(elements,show=true){for(let e of elements) e.classList.toggle('hidden',!show)}
+function display(elements,show=true){
+  for(let e of elements) e.classList.toggle('hidden',!show)
+}
 
 async function press(e){
   e.preventDefault()
@@ -17,7 +19,7 @@ async function press(e){
   if(progress.length==c.length){
     let left=PAUSE.querySelector('span')
     while(await timer.rest()>1){
-      left.textContent=Math.floor(timer.pause)
+      left.textContent=moment.duration(timer.pause,'seconds').humanize()
       display([QUOTE,CREDIT],false)
       display([PAUSE])
     }

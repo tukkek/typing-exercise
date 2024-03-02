@@ -34,7 +34,7 @@ export async function next(){
   let d=new Date()
   let q=await get(d.getHours(),d.getMinutes())
   current=q['quote_first']+q['quote_time_case']+q['quote_last']
-  for(let r in REPLACE) current=current.replaceAll(r,REPLACE.get(r))
+  for(let r of REPLACE) current=current.replaceAll(r,REPLACE.get(r))
   while(current.indexOf('  ')>=0) current=current.replace('  ',' ')
   credit=`-- ${q['author']}, ${q['title']}`
 }

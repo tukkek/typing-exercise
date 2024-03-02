@@ -1,6 +1,12 @@
 import * as rpg from './rpg.js'
 
 const DEBUG=location.toString().indexOf('debug')>=0
+const REPLACE=new Map([
+  ['’',"'"],
+  ['“','"'],
+  ['”','"'],
+  ['<br/>',' '],
+])
 
 export var current='Test.'
 export var credit=''
@@ -28,7 +34,8 @@ export async function next(){
   let d=new Date()
   let q=await get(d.getHours(),d.getMinutes())
   current=q['quote_first']+q['quote_time_case']+q['quote_last']
-  current=current.replaceAll('’',"'")
+  for(let r in REPLACE) current=current.replaceAll(r,REPLACE.get(r))
+  while(current.indexOf('  ')>=0) current=current.replace('  ',' ')
   credit=`-- ${q['author']}, ${q['title']}`
 }
 

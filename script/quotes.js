@@ -6,6 +6,7 @@ const REPLACE=new Map([
   ['“','"'],
   ['”','"'],
   ['<br/>',' '],
+  ['—','-'],
 ])
 
 export var current='Test.'

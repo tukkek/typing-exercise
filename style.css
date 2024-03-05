@@ -8,7 +8,7 @@ body{
   justify-content:center;
 }
 #quote{
-  margin:2em auto;
+  margin:1em auto;
   text-align:justify;
   align-self:center;
   width:90vw;
@@ -23,7 +23,6 @@ body{
 }
 #credit{
   text-align:right;
-  width:50vw;
   font-weight:bold;
 }
 .hidden{

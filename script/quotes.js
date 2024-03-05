@@ -38,7 +38,7 @@ export async function next(){
   current=q['quote_first']+q['quote_time_case']+q['quote_last']
   for(let r of REPLACE.keys()) current=current.replaceAll(r,REPLACE.get(r))
   while(current.indexOf('  ')>=0) current=current.replace('  ',' ')
-  credit=`-- ${q['author']}, ${q['title']}`
+  credit=`${q['author']}, ${q['title']}.`
 }
 
 export async function setup(){await next()}

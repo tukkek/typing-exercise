@@ -29,3 +29,6 @@ body{
 .hidden{
   display:none;
 }
+#pause{
+  text-align:center;
+}

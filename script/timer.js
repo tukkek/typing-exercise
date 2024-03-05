@@ -15,6 +15,6 @@ export async function rest(){
   return new Promise(callback=>{setInterval(()=>callback(pause),1000)})
 }
 
-export function setup(){
-  window.addEventListener('keypress',event=>{if(event.key=='Enter') pause=.1})
-}
+function skip(event){if(event.key=='Enter'&&pause>0) pause=.1}
+
+export function setup(){window.addEventListener('keypress',skip)}

@@ -18,8 +18,10 @@ async function press(e){
   let c=quotes.current
   if(progress.length==c.length){
     let left=PAUSE.querySelector('span')
-    while(await timer.rest()>1){
-      left.textContent=moment.duration(timer.pause,'seconds').humanize()
+    while(await timer.rest()>=0){
+      let seconds=timer.pause
+      left.textContent=seconds==0?'All rested up!':
+        `Rest for ${moment.duration(seconds,'seconds').humanize()}.`
       display([QUOTE,CREDIT],false)
       display([PAUSE])
     }

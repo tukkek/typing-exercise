@@ -1,6 +1,6 @@
 import * as rpg from './rpg.js'
+import * as engine from './engine.js'
 
-const DEBUG=location.toString().indexOf('debug')>=0
 const REPLACE=new Map([
   ['’',"'"],
   ['“','"'],
@@ -33,7 +33,7 @@ async function get(hour,minute){
 }
 
 export async function next(){
-  if(DEBUG) return
+  if(engine.debug) return
   let d=new Date()
   let q=await get(d.getHours(),d.getMinutes())
   current=q['quote_first']+q['quote_time_case']+q['quote_last']

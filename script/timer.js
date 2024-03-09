@@ -15,6 +15,7 @@ export async function rest(){
   if(pause==-1){
     pause=now()-start
     if(engine.debug) pause*=60
+    return Promise.resolve(pause)
   }
   pause-=1
   if(pause<0) pause=0 
